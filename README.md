@@ -119,6 +119,24 @@ If you are interested in running a Telegram bot, more information can be found a
 python -m binance_trade_bot
 ```
 
+### Perpetual futures RSI/Fibonacci bot
+
+This repository now also includes an opt-in script that trades the Binance
+USDT-margined perpetual contracts for BTC, ETH and SOL using 4 hour candles,
+RSI(14) swings and Fibonacci extension based risk management.  The script lives
+in `binance_trade_bot/perp_fib_rsi_bot.py` and can be executed directly:
+
+```shell
+export BINANCE_API_KEY="your-key"
+export BINANCE_API_SECRET="your-secret"
+python -m binance_trade_bot.perp_fib_rsi_bot
+```
+
+Set `PERP_DRY_RUN=false` to place real orders.  Additional environment
+variables allow you to customise the leverage (`PERP_LEVERAGE`), polling
+interval (`PERP_POLL`), risk per trade (`PERP_RISK`) and the subset of supported
+symbols (`PERP_SYMBOLS`, comma separated values from `BTCUSDT,ETHUSDT,SOLUSDT`).
+
 ### Docker
 
 The official image is available [here](https://hub.docker.com/r/idkravitz/binance-trade-bot) and will update on every new change.
